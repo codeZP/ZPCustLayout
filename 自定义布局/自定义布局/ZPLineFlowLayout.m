@@ -33,8 +33,8 @@
         CGFloat distence = ABS(attrs.center.x - centerX);
         if (distence < perX) {
             perX = distence;
+            dis = attrs.center.x - centerX;
         }
-        dis = attrs.center.x - centerX;
     }
     proposedContentOffset.x += dis;
     return proposedContentOffset;
@@ -47,7 +47,7 @@
     for (UICollectionViewLayoutAttributes *attrs in array) {
         // 距离的绝对值
         CGFloat distence = ABS(attrs.center.x - centerX);
-        CGFloat scale = 1 - (distence / self.collectionView.frame.size.width);
+        CGFloat scale = 1 - (distence / (self.collectionView.frame.size.width + 800));
         attrs.transform = CGAffineTransformMakeScale(scale, scale);
     }
     return array;
